@@ -3,6 +3,8 @@ import 'package:equatable/equatable.dart';
 
 abstract class OptionState extends Equatable {
   final options = [4, 8, 10, 12, 16, 24, 32, 64];
+
+  get selectedOption => 4;
 }
 
 class SelectedState extends OptionState {
@@ -10,4 +12,7 @@ class SelectedState extends OptionState {
   SelectedState(this.counter);
   @override
   List<Object> get props => [counter];
+
+  @override
+  get selectedOption => counter;
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/OptionCubit.dart';
@@ -11,12 +12,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
+
     return Scaffold(
         appBar: AppBar(
           // TRY THIS: Try changing the color here to a specific color (to
@@ -31,11 +27,22 @@ class HomePage extends StatelessWidget {
           title: Text("Draw app"),
         ),
         body: BlocBuilder<OptionCubit, OptionState>(builder: (context, state) {
+          final optionCubit = context.watch<OptionCubit>();
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text("Scegli il numero di squadre"),
-              Expanded(child: Options())
+              Text("Scegli il numero di squadre:"),
+              Expanded(child: Options()),
+              ListView.builder(
+                shrinkWrap: true, // Assicura che il ListView si adatti al contenuto
+                itemCount: optionCubit.state.selectedOption, // Numero di elementi nella lista dinamica
+                itemBuilder: (BuildContext context, int index) {
+                  // Costruisce dinamicamente un widget per ciascun elemento della lista dinamica
+                  return ListTile(
+                    title: Text('Elemento $index'), // Testo dell'elemento
+                  );
+                },
+              ),
             ],
           );
         })

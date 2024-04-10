@@ -25,11 +25,16 @@ class Options extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           // Costruire un singolo elemento della griglia
           return Container(
-              height: 80,
-              child: Card(
-                child: Center(
-                  child: Text(state.options[index].toString()),
-                ),
+              child: GestureDetector(
+                onTap: () {
+              // Azione da eseguire quando la Card viene toccata
+                  BlocProvider.of<OptionCubit>(context).selectOption(state.options[index]);
+                },
+                child: Card(
+                  child: Center(
+                    child: Text(state.options[index].toString()),
+                    )
+              ),
               )
           );
         },
