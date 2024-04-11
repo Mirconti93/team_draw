@@ -11,19 +11,19 @@ class Options extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<OptionCubit, OptionState>(builder: (context, state) {
+    return Container(
+        height: 40, child: BlocBuilder<OptionCubit, OptionState>(builder: (context, state) {
       return GridView.builder(
-        // Specifica il numero di colonne nella griglia
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 4, // Numero di colonne
-          crossAxisSpacing: 10.0, // Spazio orizzontale tra le colonne
-          mainAxisSpacing: 10.0, // Spazio verticale tra le righe
+          crossAxisCount: 8,
+          crossAxisSpacing: 4.0,
+          mainAxisSpacing: 4.0,
         ),
         // Numero di elementi nella griglia
         itemCount: state.options.length,
         // Costruttore per gli elementi della griglia
         itemBuilder: (BuildContext context, int index) {
-          // Costruire un singolo elemento della griglia
+          //singolo elemento della griglia
           return Container(
               child: GestureDetector(
                 onTap: () {
@@ -33,13 +33,13 @@ class Options extends StatelessWidget {
                 child: Card(
                   child: Center(
                     child: Text(state.options[index].toString()),
-                    )
-              ),
+                  )
+                ),
               )
           );
         },
       );
-    });
+    }));
 
 
   }

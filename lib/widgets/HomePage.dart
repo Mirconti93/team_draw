@@ -1,7 +1,12 @@
+import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:team_draw/widgets/DrawScreen.dart';
+import 'package:team_draw/widgets/TeamsInsert.dart';
 
 import '../bloc/OptionCubit.dart';
 import '../bloc/OptionState.dart';
@@ -24,25 +29,22 @@ class HomePage extends StatelessWidget {
               .inversePrimary,
           // Here we take the value from the MyHomePage object that was created by
           // the App.build method, and use it to set our appbar title.
-          title: Text("Draw app"),
+          title: const Text("Draw app"),
         ),
         body: BlocBuilder<OptionCubit, OptionState>(builder: (context, state) {
-          final optionCubit = context.watch<OptionCubit>();
+
           return Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text("Scegli il numero di squadre:"),
-              Expanded(child: Options()),
-              ListView.builder(
-                shrinkWrap: true, // Assicura che il ListView si adatti al contenuto
-                itemCount: optionCubit.state.selectedOption, // Numero di elementi nella lista dinamica
-                itemBuilder: (BuildContext context, int index) {
-                  // Costruisce dinamicamente un widget per ciascun elemento della lista dinamica
-                  return ListTile(
-                    title: Text('Elemento $index'), // Testo dell'elemento
-                  );
-                },
-              ),
+              const Text("Scegli il numero di squadre:"),
+              const Options(),
+              const Expanded(child: TeamInsert()),
+              ElevatedButton(style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue,
+                  textStyle: const TextStyle(
+                  color: Colors.white, fontSize: 25, fontStyle: FontStyle.normal),
+                  ),
+                onPressed: () {Navigator.of(context).pushNamed('/draw');  },
+                child: const Text("Avanti"),)
             ],
           );
         })

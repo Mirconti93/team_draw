@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:team_draw/bloc/DrawCubit.dart';
 import 'package:team_draw/bloc/OptionCubit.dart';
 import 'package:team_draw/bloc/OptionState.dart';
+import 'package:team_draw/widgets/DrawScreen.dart';
 import 'package:team_draw/widgets/HomePage.dart';
 import 'package:team_draw/widgets/Options.dart';
 
@@ -29,6 +30,10 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigoAccent),
             useMaterial3: true,
           ),
+          routes: {
+            //'/': (context) => HomePage(),
+            '/draw': (context) => DrawScreen(),
+          },
           home: HomePage()
         )
     );
