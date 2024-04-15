@@ -12,6 +12,12 @@ class DrawCubit extends Cubit<DrawState> {
     emit(UpdateState(teams));
   }
 
+  void addTeam(Team team, int index) {
+    List<Team> newList = List.from(state.props);
+    newList[index] = team;
+    emit(UpdateState(newList));
+  }
+
   void notifyError() {
     emit(ErrorState("Error"));
   }

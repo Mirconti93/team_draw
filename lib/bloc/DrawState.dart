@@ -6,12 +6,14 @@ abstract class DrawState extends Equatable {
 }
 
 class InitialState extends DrawState {
+  List<Team> teams = [];
   @override
-  List<Object> get props => [];
+  List<Object> get props => [teams];
 }
 
 class UpdateState extends DrawState {
   List<Team> teams = [];
+
   UpdateState(this.teams);
 
   @override

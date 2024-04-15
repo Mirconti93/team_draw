@@ -41,9 +41,11 @@ class HomePage extends StatelessWidget {
               ElevatedButton(style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blue,
                   textStyle: const TextStyle(
-                  color: Colors.white, fontSize: 25, fontStyle: FontStyle.normal),
+                  color: Colors.white, fontSize: 16, fontStyle: FontStyle.normal),
                   ),
-                onPressed: () {Navigator.of(context).pushNamed('/draw');  },
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/draw');
+                      },
                 child: const Text("Avanti"),)
             ],
           );
