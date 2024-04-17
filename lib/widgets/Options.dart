@@ -16,8 +16,8 @@ class Options extends StatelessWidget {
       return GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 8,
-          crossAxisSpacing: 4.0,
-          mainAxisSpacing: 4.0,
+          crossAxisSpacing: 2.0,
+          mainAxisSpacing: 2.0,
         ),
         // Numero di elementi nella griglia
         itemCount: state.options.length,
@@ -25,6 +25,7 @@ class Options extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           //singolo elemento della griglia
           return Container(
+              height: 40,
               child: GestureDetector(
                 onTap: () {
               // Azione da eseguire quando la Card viene toccata

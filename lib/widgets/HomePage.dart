@@ -44,8 +44,9 @@ class HomePage extends StatelessWidget {
                   color: Colors.white, fontSize: 16, fontStyle: FontStyle.normal),
                   ),
                 onPressed: () {
+
                   Navigator.of(context).pushNamed('/draw');
-                      },
+                },
                 child: const Text("Avanti"),)
             ],
           );

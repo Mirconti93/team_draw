@@ -19,7 +19,8 @@ class TeamInsert extends StatelessWidget {
       itemBuilder: (BuildContext context, int index) {
         // Costruisce dinamicamente un widget per ciascun elemento della lista dinamica
         return ListTile(
-          title: Padding(
+          title: Container(
+            height: 28,
             padding: EdgeInsets.all(2.0),
             child: TextField(
               decoration: InputDecoration(
@@ -29,7 +30,7 @@ class TeamInsert extends StatelessWidget {
               onChanged: (text) {
                 // Callback chiamato ogni volta che il testo nel campo di testo viene modificato
                 print('Nuovo testo: $text');
-                BlocProvider.of<DrawCubit>(context).addTeam(Team(name: 'text', weight: 0), index);
+                BlocProvider.of<DrawCubit>(context).addTeam(Team(name: text, weight: 0), index);
               },
             ),
           ),

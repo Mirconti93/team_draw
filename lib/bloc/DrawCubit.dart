@@ -14,7 +14,7 @@ class DrawCubit extends Cubit<DrawState> {
 
   void addTeam(Team team, int index) {
     List<Team> newList = List.from(state.props);
-    newList[index] = team;
+    newList.add(team);
     emit(UpdateState(newList));
   }
 

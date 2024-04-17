@@ -13,17 +13,18 @@ class DrawScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final drawCubit = context.watch<DrawCubit>();
     return Scaffold(
         appBar: AppBar(title: const Text("Draw")),
         body: BlocBuilder<DrawCubit, DrawState>(builder: (context, state) {
+          final drawCubit = context.watch<DrawCubit>();
           return Column(
             children: [
               Text("Draw result:", textAlign: TextAlign.center),
               ListView.builder(padding: const EdgeInsets.all(4),
-                itemCount: state.props.length,
+                itemCount: drawCubit.state.props.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return Text(state.props[index].toString());
+                  print("item:" + drawCubit.state.teamList[index].name);
+                  return Text(drawCubit.state.teamList[index].name);
                 }),
             ],
           );
